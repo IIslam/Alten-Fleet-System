@@ -54,10 +54,15 @@ const cars = {
 const port = normalizePort(process.env.PORT || "3002");
 const app = express();
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 app.use(bodyParser.json());
 
 app.get("/cars", (req, res) => {
-  let carsWithStatus = cars;
   request.get(
     "http://localhost:3001/connected",
     {
@@ -65,10 +70,15 @@ app.get("/cars", (req, res) => {
     },
     (err, StatusRes, body) => {
       let connectedCars = JSON.parse(body);
-      connectedCars.forEach(connectedCar => {
-        carsWithStatus[connectedCar].status = "connected";
+      let carsWithStatus = _.map(cars, car => {
+        if (_.includes(connectedCars, car.registration)) {
+          car.status = "connected";
+        } else {
+          car.status = "not-connected";
+        }
+        return car;
       });
-      res.status(200).send({ cars: carsWithStatus });
+      res.status(200).send(Object.values(_.filter(carsWithStatus, req.query)));
     }
   );
 });
