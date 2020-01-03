@@ -1,0 +1,60 @@
+{
+  "vehicles": [
+    {
+      "id": 1,
+      "vin": "YS2R4X20005399401",
+      "registration": "ABC123",
+      "customerSlug": "kalles-grustransporter-ab",
+      "custumerName": "Kalles Grustransporter AB",
+      "status": "connected"
+    },
+    {
+      "id": 2,
+      "vin": "VLUR4X20009093588",
+      "registration": "DEF456",
+      "customerSlug": "kalles-grustransporter-ab",
+      "custumerName": "Kalles Grustransporter AB",
+      "status": "connected"
+    },
+    {
+      "id": 3,
+      "vin": "VLUR4X20009048066",
+      "registration": "GHI789",
+      "customerSlug": "kalles-grustransporter-ab",
+      "custumerName": "Kalles Grustransporter AB",
+      "status": "not-connected"
+    },
+    {
+      "id": 4,
+      "vin": "YS2R4X20005388011",
+      "registration": "JKL012",
+      "customerSlug": "johans-bulk-ab",
+      "custumerName": "Johans Bulk AB",
+      "status": "not-connected"
+    },
+    {
+      "id": 5,
+      "vin": "YS2R4X20005387949",
+      "registration": "MNO345",
+      "customerSlug": "johans-bulk-ab",
+      "custumerName": "Johans Bulk AB",
+      "status": "connected"
+    },
+    {
+      "id": 6,
+      "vin": "VLUR4X20009048066",
+      "registration": "PQR678",
+      "customerSlug": "haralds-värdetransporter-ab",
+      "custumerName": "Haralds Värdetransporter AB",
+      "status": "connected"
+    },
+    {
+      "id": 7,
+      "vin": "YS2R4X20005387055",
+      "registration": "STU901",
+      "customerSlug": "haralds-värdetransporter-ab",
+      "custumerName": "Haralds Värdetransporter AB",
+      "status": "connected"
+    }
+  ]
+}

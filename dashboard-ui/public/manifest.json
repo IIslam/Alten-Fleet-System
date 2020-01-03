@@ -1,0 +1,8 @@
+{
+  "short_name": "Alten",
+  "name": "Alten code challenge",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
