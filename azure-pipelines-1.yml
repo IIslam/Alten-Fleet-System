@@ -28,11 +28,3 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     OverWrite: true
-    
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Microsoft Imagine (2e34fe41-56c7-4167-bbea-a3d480a02512)'
-    appType: 'webApp'
-    WebAppName: 'altenui'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/dashboard-ui/build/**'
