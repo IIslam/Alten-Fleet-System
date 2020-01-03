@@ -10,6 +10,7 @@ export class CustomerSearchBar extends Component {
         classNamePrefix="react-select"
         className="client-search"
         placeholder="Insert Client Names"
+        isClearable
         value={customersList}
         onChange={handleCustomer}
         options={options}

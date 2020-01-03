@@ -58,9 +58,13 @@ class App extends React.Component {
   }
 
   handleCustomer(selectedCustomers) {
-    this.setState({ selectedCustomers: [selectedCustomers] }, () =>
-      this.updateResults()
-    );
+    if (selectedCustomers) {
+      this.setState({ selectedCustomers: [selectedCustomers] }, () =>
+        this.updateResults()
+      );
+    } else {
+      this.setState({ selectedCustomers: [] }, () => this.updateResults());
+    }
   }
 
   handleStatus(event) {
