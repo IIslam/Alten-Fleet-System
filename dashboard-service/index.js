@@ -51,7 +51,7 @@ const cars = {
   }
 };
 
-const port = normalizePort(process.env.PORT || "3001");
+const port = normalizePort(process.env.PORT || "3002");
 const app = express();
 
 app.use(bodyParser.json());
@@ -59,7 +59,7 @@ app.use(bodyParser.json());
 app.get("/cars", (req, res) => {
   let carsWithStatus = cars;
   request.get(
-    "http://localhost:3000/connected",
+    "http://localhost:3001/connected",
     {
       headers: { "content-type": "application/json" }
     },
