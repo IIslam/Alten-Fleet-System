@@ -35,4 +35,4 @@ steps:
     azureSubscription: 'Microsoft Imagine (2e34fe41-56c7-4167-bbea-a3d480a02512)'
     appType: 'webApp'
     WebAppName: 'altenui'
-    packageForLinux: '$(System.DefaultWorkingDirectory)dashboard-ui/build/**'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/dashboard-ui/build/**'
