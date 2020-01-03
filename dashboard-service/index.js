@@ -52,6 +52,7 @@ const cars = {
 };
 
 const port = normalizePort(process.env.PORT || "3002");
+const statusServiceURI = process.env.STATUS_SERVICE || "http://localhost:3001";
 const app = express();
 
 app.use(function(req, res, next) {
@@ -64,7 +65,7 @@ app.use(bodyParser.json());
 
 app.get("/cars", (req, res) => {
   request.get(
-    "http://localhost:3001/connected",
+    `${statusServiceURI}/connected`,
     {
       headers: { "content-type": "application/json" }
     },
@@ -100,8 +101,4 @@ function normalizePort(val) {
   }
 
   return false;
-}
-
-function checkStatus(lastPing) {
-  return moment.duration(moment().diff(lastPing)).asMinutes() <= 1;
 }

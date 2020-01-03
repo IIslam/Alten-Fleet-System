@@ -1,7 +1,10 @@
 import { handleResponse } from "../utils/responseHandler";
 
+const dashboardServiceURI =
+  process.env.DASHBOARD_SERVICE || "http://localhost:3002";
+
 export function getVehicles(queryString = "") {
-  return fetch(`http://localhost:3002/cars/${queryString}`, {
+  return fetch(`${dashboardServiceURI}/cars/${queryString}`, {
     method: "GET"
   }).then(handleResponse);
 }
