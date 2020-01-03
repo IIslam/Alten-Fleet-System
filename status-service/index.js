@@ -46,11 +46,17 @@ const cars = {
 const port = normalizePort(process.env.PORT || "3001");
 const app = express();
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 app.use(bodyParser.json());
 
 app.get("/connect/:regNo", (req, res) => {
-  let vin = req.params.regNo;
-  cars[vin].lastPing = moment();
+  let regNo = req.params.regNo;
+  cars[regNo].lastPing = moment();
   res.status(200).send({ status: "connected" });
 });
 
@@ -60,14 +66,6 @@ app.get("/connected", (req, res) => {
     item => item.regNo
   );
   res.status(200).send(connectCarsVin);
-});
-
-app.get("/:regNo", (req, res) => {
-  if (checkStatus(cars[req.params.regNo].lastPing)) {
-    res.status(200).send({ status: "connected" });
-  } else {
-    res.status(200).send({ status: "not-connected" });
-  }
 });
 
 console.log(`Threats service listening on port ${port}.`);
