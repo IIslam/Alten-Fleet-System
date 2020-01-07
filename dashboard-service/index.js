@@ -51,8 +51,8 @@ const cars = {
   }
 };
 
-const port = normalizePort(process.env.PORT || "3002");
-const statusServiceURI = process.env.STATUS_SERVICE || "http://localhost:3001";
+const port = normalizePort(process.env.PORT || "8002");
+const statusServiceURI = process.env.STATUS_SERVICE || "http://localhost:8001";
 const app = express();
 
 app.use(function(req, res, next) {
@@ -70,16 +70,32 @@ app.get("/cars", (req, res) => {
       headers: { "content-type": "application/json" }
     },
     (err, StatusRes, body) => {
-      let connectedCars = JSON.parse(body);
-      let carsWithStatus = _.map(cars, car => {
-        if (_.includes(connectedCars, car.registration)) {
-          car.status = "connected";
+      if (err) {
+        console.log(err);
+        res.status(403).send({
+          msg: "Unable to get cars status please check status service.",
+          error: err
+        });
+      } else {
+        if (StatusRes.statusCode == 200) {
+          let connectedCars = JSON.parse(body);
+          let carsWithStatus = _.map(cars, car => {
+            if (_.includes(connectedCars, car.registration)) {
+              car.status = "connected";
+            } else {
+              car.status = "not-connected";
+            }
+            return car;
+          });
+          res
+            .status(200)
+            .send(Object.values(_.filter(carsWithStatus, req.query)));
         } else {
-          car.status = "not-connected";
+          res.status(403).send({
+            error: "Unable to get cars status please check status service."
+          });
         }
-        return car;
-      });
-      res.status(200).send(Object.values(_.filter(carsWithStatus, req.query)));
+      }
     }
   );
 });

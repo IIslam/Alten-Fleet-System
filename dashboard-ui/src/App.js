@@ -2,7 +2,7 @@ import React from "react";
 import _ from "lodash";
 import { Helmet } from "react-helmet";
 import "./App.css";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import { getVehicles } from "./services/vehicles";
 import CustomerSearchBar from "./components/CustomerSearchBar";
@@ -112,7 +112,7 @@ class App extends React.Component {
             crossorigin="anonymous"
           />
         </Helmet>
-        <Grid>
+        <Container>
           <Row>
             <Col xs={12}>
               <h1 className="title">Vehicles Status System</h1>
@@ -135,7 +135,7 @@ class App extends React.Component {
               <VehiclesTable vehicles={vehicles} />
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </React.Fragment>
     );
   }

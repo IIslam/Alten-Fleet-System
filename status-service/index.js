@@ -43,7 +43,7 @@ const cars = {
   }
 };
 
-const port = normalizePort(process.env.PORT || "3001");
+const port = normalizePort(process.env.PORT || "8001");
 const app = express();
 
 app.use(function(req, res, next) {
