@@ -1,0 +1,25 @@
+version: "3"
+services:
+  dashboard-ui:
+    image: fleet/dashboard-ui
+    build: ./dashboard-ui
+    environment:
+      - PORT=3000
+      - DASHBOARD_SERVICE=http://dashboard-serive:8002
+    ports:
+      - "3000:3000"
+  status-service:
+    image: fleet/status-service
+    build: ./status-service
+    environment:
+      - PORT=8001
+    ports:
+      - "8001:8001"
+  dashboard-service:
+    image: fleet/dashboard-service
+    build: ./dashboard-service
+    environment:
+      - PORT=8002
+      - STATUS_SERVICE=http://status-service:8001
+    ports:
+      - "8002:8002"
