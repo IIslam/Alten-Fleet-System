@@ -32,12 +32,14 @@ The project is split into 3 main parts:
 ## Software installation prerequisites:
 
 - [NodeJS](https://nodejs.org/en/) 12.14.0 or greater
-- [[Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/)
 
-## Running Steps for dev
+## Running Steps
 
 1. Clone or download the projects from repo.
 2. Run `docker-compose up`
-   or for ### Development
+
+## Running Steps for Development
+
 3. Open each folder and Run `npm install`
 4. Navigate `dashboard-ui` folder and run `npm run dev`
